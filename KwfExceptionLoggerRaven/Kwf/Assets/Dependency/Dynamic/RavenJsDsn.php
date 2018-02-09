@@ -8,9 +8,6 @@ class KwfExceptionLoggerRaven_Kwf_Assets_Dependency_Dynamic_RavenJsDsn extends K
 
     public function getContentsPacked()
     {
-        if (!Kwf_Config::getValue('ravenJs.dsn')) {
-            throw new Kwf_Exception('ravenJS.dsn config setting is required');
-        }
         $data = array(
             'dsn' => Kwf_Config::getValue('ravenJs.dsn')
         );

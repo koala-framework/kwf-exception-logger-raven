@@ -3,7 +3,7 @@ class KwfExceptionLoggerRaven_Kwf_Assets_Provider_ErrorHandler extends Kwf_Asset
 {
     public function getDependency($dependencyName)
     {
-        if ($dependencyName == 'KwfErrorHandler') {
+        if (Kwf_Config::getValue('ravenJs.dsn') && $dependencyName == 'KwfErrorHandler') {
             return new Kwf_Assets_Dependency_Dependencies(
                 $this->_providerList,
                 array(
