@@ -1,0 +1,24 @@
+{
+    "name": "koala-framework/kwf-exception-logger-raven",
+    "description": "Log exceptions for sentry with raven client",
+    "homepage": "http://www.koala-framework.org/",
+    "type": "library",
+    "require": {
+        "sentry/sentry": "^1.8",
+        "koala-framework/koala-framework": "~4.0"
+    },
+    "extra": {
+        "require-npm": {
+            "raven-js": "^3.22.2"
+        },
+        "expose-npm-packages": true
+    },
+    "license": "BSD-2-Clause",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-0": {
+            "KwfExceptionLoggerRaven_": ""
+        }
+    }
+}
