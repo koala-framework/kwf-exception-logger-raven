@@ -5,7 +5,7 @@
     "type": "library",
     "require": {
         "sentry/sentry": "^1.8",
-        "koala-framework/koala-framework": "~4.0"
+        "koala-framework/koala-framework": "~4.0 || ~5.0"
     },
     "extra": {
         "require-npm": {
