@@ -1,10 +1,48 @@
 <?php
 class KwfExceptionLoggerRaven_Kwf_Exception_Logger_Raven extends Kwf_Exception_Logger_Abstract
 {
+    private $tags = ARRAY();
+    private $additionalData = ARRAY();
+
     public function __construct()
     {
         $this->_fileLogger = new Kwf_Exception_Logger_LogFiles();
     }
+
+    /**
+     * @param array $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @param array $additionalData
+     */
+    public function setAdditionalData($additionalData)
+    {
+        $this->additionalData = $additionalData;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     */
+    public function addTag($key, $value)
+    {
+        $this->tags[$key] = $value;
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     */
+    public function addAdditionalData($key, $value)
+    {
+        $this->additionalData[$key] = $value;
+    }
+
 
     public function log(Kwf_Exception_Abstract $exception, $type, $content)
     {
@@ -38,6 +76,14 @@ class KwfExceptionLoggerRaven_Kwf_Exception_Logger_Raven extends Kwf_Exception_L
             $client->user_context(array(
                 'user' => $user
             ));
+        }
+
+        if (count($this->tags) > 0) {
+            $client->tags_context($this->tags);
+        }
+
+        if (count($this->additionalData) > 0) {
+            $client->extra_context($this->additionalData);
         }
 
         try {
